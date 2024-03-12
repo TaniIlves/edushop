@@ -1,14 +1,19 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
 def index(request):
     context = {
-        'title': 'Home',
-        'content': 'Home page of the fucking shop',
+        'title': 'Fucking shop - Main',
+        'content': 'Home page of the Fucking shop',
     }
 
     return render(request, 'main/index.html', context)
 
 def about(request):
-    return HttpResponse('About us')
+    context = {
+        'title': 'Fucking shop - About',
+        'content': 'About the Fucking shop',
+        'text_on_page': 'The Fucking shop is the best fucking shop in the fucking world'
+    }
+
+    return render(request, 'main/about.html', context)
