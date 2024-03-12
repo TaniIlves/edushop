@@ -1,0 +1,13 @@
+# Python stuff
+venv
+.pylintrc
+__pycache__
+
+# IDE stuff
+.vscode
+.idea
+
+# Django stuff
+*.sqlite3
+media/
+*/migrations/*
