@@ -46,7 +46,7 @@ class Products(models.Model):
         return f'{self.name}. Quantity - {self.quantity}'
 
     def display_id(self):
-        return f'{self.id:05}'  # Add nulls for ID to 5 digits
+        return f'{self.id:05}'  # Add nulls for ID to five digits
 
     def sell_price(self):
         if self.discount:

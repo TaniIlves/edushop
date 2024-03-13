@@ -8,7 +8,7 @@
             <!-- Миниатюры -->
             <div class="col-md-4">
                 <img src="{{ product.image.url }}"
-                    class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                    class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1" alt="{{ product.name }}">
             </div>
             <div class="col-md-4 ">
                 <p class="product_id mt-3">id: {{ product.display_id }}</p>
@@ -39,5 +39,6 @@
             <a href="#" class="btn btn-dark add-to-cart">Добавить в корзину</a>
         </div>
     </div>
+</div>
 {% endblock content %}
 

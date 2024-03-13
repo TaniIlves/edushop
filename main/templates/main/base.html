@@ -89,11 +89,11 @@
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
                     {% tag_categories as categories %}
                     {% for category in categories  %}
-                        <li><a class="dropdown-item text-white" href="{% url "catalog:index" %}">{{ category.name }}</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url 'catalog:index' category.slug %}">{{ category.name }}</a></li>
                     {% endfor %}
                     </ul>
                 </div>
-                <!-- Значек корзины, вызывает модальное окно -->
+                <!-- Значок корзины, вызывает модальное окно -->
                 <div>
                     <button type="button" class="btn btn-dark btn-secondary d-flex" id="modalButton"
                         aria-expanded="false">
