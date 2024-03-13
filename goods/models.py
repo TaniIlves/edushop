@@ -22,7 +22,7 @@ class Products(models.Model):
     slug = models.SlugField(
         max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
     )
-    description = models.TextField(blank=True, null=True, verbose_name="Description")
+    description = models.TextField(blank=True, verbose_name="Description")
     image = models.ImageField(
         upload_to="goods_images", blank=True, null=True, verbose_name="Image"
     )
@@ -42,6 +42,13 @@ class Products(models.Model):
         verbose_name = "Product"
         verbose_name_plural = "Products"
 
-
     def __str__(self):
         return f'{self.name}. Quantity - {self.quantity}'
+
+    def display_id(self):
+        return f'{self.id:05}'  # Add nulls for ID to 5 digits
+
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price*self.discount/100, 2)
+        return self.price

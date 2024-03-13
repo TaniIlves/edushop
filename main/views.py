@@ -10,7 +10,6 @@ def index(request):
     context = {
         'title': 'Fucking shop - Main',
         'content': 'Home page of the Fucking shop',
-        'categories': categories,
     }
 
     return render(request, 'main/index.html', context)
