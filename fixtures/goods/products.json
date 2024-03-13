@@ -10,7 +10,7 @@
             "price": "150.00",
             "discount": "10.00",
             "quantity": 10,
-            "category": 1
+            "category": 2
         }
     },
     {
@@ -24,7 +24,7 @@
             "price": "93.00",
             "discount": "2.50",
             "quantity": 7,
-            "category": 1
+            "category": 2
         }
     },
     {
@@ -38,7 +38,7 @@
             "price": "670.00",
             "discount": "0.00",
             "quantity": 5,
-            "category": 1
+            "category": 3
         }
     },
     {
@@ -52,7 +52,7 @@
             "price": "365.00",
             "discount": "0.00",
             "quantity": 11,
-            "category": 1
+            "category": 2
         }
     },
     {
@@ -66,7 +66,7 @@
             "price": "430.00",
             "discount": "5.00",
             "quantity": 8,
-            "category": 1
+            "category": 2
         }
     },
     {
@@ -80,7 +80,7 @@
             "price": "610.00",
             "discount": "2.00",
             "quantity": 8,
-            "category": 1
+            "category": 4
         }
     },
     {
@@ -94,7 +94,7 @@
             "price": "55.00",
             "discount": "0.00",
             "quantity": 6,
-            "category": 1
+            "category": 3
         }
     },
     {
@@ -108,7 +108,7 @@
             "price": "190.00",
             "discount": "5.00",
             "quantity": 5,
-            "category": 1
+            "category": 4
         }
     },
     {
@@ -122,7 +122,7 @@
             "price": "30.00",
             "discount": "0.50",
             "quantity": 35,
-            "category": 1
+            "category": 5
         }
     },
     {
@@ -136,7 +136,7 @@
             "price": "10.00",
             "discount": "0.00",
             "quantity": 17,
-            "category": 1
+            "category": 7
         }
     },
     {
@@ -150,7 +150,7 @@
             "price": "15.00",
             "discount": "0.00",
             "quantity": 17,
-            "category": 1
+            "category": 7
         }
     },
     {
@@ -164,7 +164,7 @@
             "price": "25.00",
             "discount": "90.00",
             "quantity": 10,
-            "category": 1
+            "category": 3
         }
     }
 ]
