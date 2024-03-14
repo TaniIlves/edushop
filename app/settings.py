@@ -153,8 +153,9 @@ INTERNAL_IPS = [
 ]
 
 
-# Override for User model
+# Overrides
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = '/user/login/'
 
 
 # Default primary key field type

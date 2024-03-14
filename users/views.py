@@ -20,6 +20,10 @@ def login(request):
                     request,
                     f'Welcome, {username}! Authorization completed successfully.'
                 )
+
+                if request.POST.get('next', None):
+                    return HttpResponseRedirect(request.POST.get('next'))
+
                 return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserLoginForm()
