@@ -2,6 +2,10 @@
 {% load static %}
 {% load goods_tags %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/my_footer_css.css" %}">
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <!-- Форма фильтров -->
@@ -61,6 +65,12 @@
     </div>
 
 
+    {% if request.GET.q %}
+    <h3 class="mt-4">Search results for "{{ request.GET.q }}"</h3>
+    {% if not goods %}
+    <h3 class="mt-4">No goods found</h3>
+    {% endif %}
+    {% endif %}
     {% for product in goods %}
     <!-- Карта товара -->
     <div class="col-lg-4 col-md-6 p-4">
@@ -72,9 +82,25 @@
         {% endif %}
             <div class="card-body">
                 <a href="{% url 'catalog:product' product.slug %}">
-                    <p class="card-title">{{ product.name }}</p>
+                    <p class="card-title">
+                        {% autoescape off %}
+                        {% if product.headline %}
+                            {{ product.headline }}
+                        {% else %}
+                            {{ product.name }}
+                        {% endif %}
+                        {% endautoescape %}
+                    </p>
                 </a>
-                <p class="card-text">{{ product.description|truncatechars:35 }}</p>
+                <p class="card-text">
+                    {% autoescape off %}
+                    {% if product.bodyline %}
+                        {{ product.bodyline }}
+                    {% else %}
+                        {{ product.description|truncatechars:35 }}
+                    {% endif %}
+                    {% endautoescape %}
+                </p>
                 <p class="product_id">id: {{ product.display_id }}</p>
                 <div class="d-flex justify-content-between">
                 {%  if product.discount %}
@@ -95,6 +121,8 @@
     {% endfor %}
 
 </div>
+
+{% if goods %}
 <!-- Пагинация -->
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center my-4">
@@ -117,6 +145,7 @@
         </div>
     </ul>
 </nav>
+{% endif %}
 {% endblock content %}
 
 
