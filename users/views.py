@@ -86,3 +86,8 @@ def logout(request):
     )
     auth.logout(request)
     return redirect(reverse('main:index'))
+
+
+@login_required
+def users_cart(request):
+    return render(request, 'users/users_cart.html')
