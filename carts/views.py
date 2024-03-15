@@ -5,6 +5,8 @@ from carts.models import Cart
 from carts.utils import get_user_carts
 from goods.models import Products
 
+INCLUDE_LINK = 'carts/includes/cart_include.html'
+
 
 def cart_add(request):
     product_id = request.POST.get('product_id')
@@ -23,7 +25,7 @@ def cart_add(request):
 
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        'carts/includes/cart_include.html',
+        INCLUDE_LINK,
         {'carts': user_cart},
         request=request,
     )
@@ -46,7 +48,7 @@ def cart_change(request):
 
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        'carts/includes/cart_include.html',
+        INCLUDE_LINK,
         {'carts': user_cart},
         request=request,
     )
@@ -67,7 +69,7 @@ def cart_remove(request):
 
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        'carts/includes/cart_include.html',
+        INCLUDE_LINK,
         {'carts': user_cart},
         request=request,
     )
