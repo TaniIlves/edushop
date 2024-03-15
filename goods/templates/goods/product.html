@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block modal_cart %}
+  {% include 'includes/cart_button.html' %}
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <div class="card mb-4 custom-shadow">
@@ -13,7 +17,7 @@
             <div class="col-md-4 ">
                 <p class="product_id mt-3">id: {{ product.display_id }}</p>
             </div>
-            <!-- Увеличить изображение в модальном окне -->
+            <!-- Enlarge image in a modal window -->
             <div class="modal fade" id="imageModal1" tabindex="-1"
                 aria-labelledby="imageModal1Label" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -21,7 +25,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Закрыть"></button>
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <img src="{{ product.image.url }}"
@@ -33,10 +37,10 @@
         </div>
         <!-- Описание товара -->
         <div class="card-body">
-            <p class="card-text">Цена: <strong>${{ product.sell_price }}</strong></p>
+            <p class="card-text">Price: <strong>${{ product.sell_price }}</strong></p>
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">{{ product.description }}</p>
-            <a href="#" class="btn btn-dark add-to-cart">Добавить в корзину</a>
+            <a href="{% url 'carts:cart_add' product.slug %}" class="btn btn-dark add-to-cart">Add to cart</a>
         </div>
     </div>
 </div>
