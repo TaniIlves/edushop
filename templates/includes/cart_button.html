@@ -28,9 +28,9 @@
         </div>
 
         {% if not carts %}
-          <a class="btn btn-outline-dark disabled" aria-disabled="true" href="orders/create_order.html">
+          <a class="btn btn-outline-dark disabled" aria-disabled="true" href="#">
         {% else %}
-          <a class="btn btn-dark" href="orders/create_order.html">
+          <a class="btn btn-dark" href="{% url 'order:create_order' %}">
         {% endif %}
         Checkout
         </a>
