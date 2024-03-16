@@ -43,8 +43,3 @@ class Cart(models.Model):
     def products_price(self):
         return round(self.product.sell_price() * self.quantity, 2)
 
-# For future
-# order_id = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name='Order #')
-#
-# class Order(models.Model):
-#     cart = models.ForeignKey(to=Cart, on_delete=models.CASCADE, verbose_name='Cart')
