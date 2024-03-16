@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 
 def index(request):
-
     context = {
         'title': 'Fucking shop - Main',
         'content': 'Home page of the Fucking shop',
