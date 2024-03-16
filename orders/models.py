@@ -4,7 +4,7 @@ from goods.models import Products
 from users.models import User
 
 
-class OrderitemQueryset(models.QuerySet):
+class OrderItemQueryset(models.QuerySet):
 
     def total_price(self):
         return sum(cart.products_price() for cart in self)
@@ -30,7 +30,10 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, verbose_name="Phone number")
     requires_delivery = models.BooleanField(default=False, verbose_name="Delivery required")
     delivery_address = models.TextField(blank=True, verbose_name="Delivery address")
-    payment_on_get = models.BooleanField(default=False, verbose_name="Payment upon receipt of order")
+    payment_on_get = models.BooleanField(
+        default=False,
+        verbose_name="Payment upon receipt of order"
+    )
     is_paid = models.BooleanField(default=False, verbose_name="Paid")
     status = models.CharField(max_length=50, default='In processing', verbose_name="Order status")
 
@@ -62,11 +65,10 @@ class OrderItem(models.Model):
         verbose_name = "Sold item"
         verbose_name_plural = "Sold items"
 
-    objects = OrderitemQueryset.as_manager()
+    objects = OrderItemQueryset.as_manager()
 
     def products_price(self):
         return round(self.product.sell_price() * self.quantity, 2)
 
     def __str__(self):
         return f"Item {self.name} | Order № {self.order.pk}"
-

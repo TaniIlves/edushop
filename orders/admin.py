@@ -2,10 +2,6 @@ from django.contrib import admin
 
 from orders.models import Order, OrderItem
 
-# for example:
-# admin.site.register(Order)
-# admin.site.register(OrderItem)
-
 
 class OrderItemTabularAdmin(admin.TabularInline):
     model = OrderItem
