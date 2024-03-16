@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.min.css" %}">
   <link rel="stylesheet" href="{% static "css/my_css.css" %}">
-  <!-- Стиль footer-a для главной страницы -->
+  <!-- Footer style for the main page -->
   {% block css %}
   {% endblock %}
   <!-- Favicons for different platforms -->
@@ -32,48 +32,47 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
-              Информация
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+              Info
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item text-white" href="#">Доставка и оплата</a></li>
-              <li><a class="dropdown-item text-white" href="#">Контактная информация</a></li>
-              <li><a class="dropdown-item text-white" href="{% url "main:about" %}">Про нас</a></li>
+              <li><a class="dropdown-item text-white" href="#">Shipping and payment</a></li>
+              <li><a class="dropdown-item text-white" href="#">Contact Information</a></li>
+              <li><a class="dropdown-item text-white" href="{% url "main:about" %}">About us</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'user:users_cart' %}">Корзина</a>
+            <a class="nav-link text-white" href="{% url 'user:users_cart' %}">Cart</a>
           </li>
           {% if not user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'user:login' %}">Войти</a>
+              <a class="nav-link text-white" href="{% url 'user:login' %}">Login</a>
             </li>
           {% else %}
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">
-                Мой профиль
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                 aria-expanded="false">
+                User profile
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item text-white" href="{% url 'user:users_cart' %}">Корзина</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'user:profile' %}">Личный кабинет</a>
-                </li>
+                <li><a class="dropdown-item text-white" href="{% url 'user:users_cart' %}">Cart</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'user:profile' %}">User info</a></li>
                 {% if not user.is_admin or user.is_stuff %}
-                  <li><a class="dropdown-item text-white" href="{% url "admin:index" %}">Админ панель</a></li>
+                  <li><a class="dropdown-item text-white" href="{% url "admin:index" %}">Admin panel</a></li>
                 {% endif %}
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-white" href="{% url 'user:logout' %}">Выйти</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'user:logout' %}">Logout</a></li>
               </ul>
             </li>
           {% endif %}
         </ul>
         <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method="get">
           <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success text-white" type="submit">Поиск</button>
+          <button class="btn btn-outline-success text-white" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -81,38 +80,38 @@
 </header>
 <section>
   <div class="container">
-    <!-- Каталог и корзина с фиксированным расположением на странице -->
+    <!-- Catalog and cart with a fixed location on the page -->
     <div class="row mt-1 position-fixed z-3">
-      <!-- Каталог -->
+      <!-- Product list -->
       <div class="dropdown mb-2">
         <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
           Каталог
-          <img class="mx-1" src="{% static "icons/grid-fill.svg" %}" alt="Catalog Icon" width="16"
-               height="16">
+          <img class="mx-1" src="{% static "icons/grid-fill.svg" %}" alt="Catalog Icon" width="16" height="16">
         </button>
         <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
           {% tag_categories as categories %}
           {% for category in categories %}
-            <li><a class="dropdown-item text-white"
-                   href="{% url 'catalog:index' category.slug %}">{{ category.name }}</a></li>
+            <li>
+              <a class="dropdown-item text-white" href="{% url 'catalog:index' category.slug %}">{{ category.name }}</a>
+            </li>
           {% endfor %}
         </ul>
       </div>
-      <!-- Значок корзины, вызывает модальное окно -->
+      <!-- Cart icon, opens a modal window -->
       {% block modal_cart %}
       {% endblock %}
-      <!-- Закончилась разметка модального окна -->
+      <!-- Modal window layout end -->
     </div>
   </div>
-  <!-- Контент -->
+  <!-- Content -->
   <div class="container">
     <div class="row mt-1">
       <div class="col-lg-2">
-        <!-- Пустой блок на Ваше усмотрение -->
+        <!-- Empty block at your discretion -->
       </div>
       <div class="col-lg-10">
-        <!-- Контент на странице -->
+        <!-- Content on the page -->
         {% include 'includes/notifications.html' %}
 
         {% block content %}
