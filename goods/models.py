@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-# Create your models here.
 class Categories(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name="Name")
     slug = models.SlugField(
@@ -55,5 +54,5 @@ class Products(models.Model):
 
     def sell_price(self):
         if self.discount:
-            return round(self.price - self.price*self.discount/100, 2)
+            return round(self.price - self.price * self.discount / 100, 2)
         return self.price
